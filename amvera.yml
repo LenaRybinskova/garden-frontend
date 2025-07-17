@@ -1,0 +1,16 @@
+---
+version: null
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 20.18.3
+build:
+  skip: false
+  additionalCommands: npm install
+  artifacts:
+    '*': /
+run:
+  command: npm run dev
+  persistenceMount: /data
+  containerPort: 3000
