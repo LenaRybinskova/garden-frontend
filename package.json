@@ -2,18 +2,19 @@
   "name": "frontend-garden",
   "version": "0.1.0",
   "private": true,
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint-staged": {
-      "*.{js,jsx,ts,tsx}": [
-        "eslint --fix",
-        "prettier --write"
-      ]
-    }
+    "lint": "next lint"
+
   },
   "dependencies": {
     "next": "15.4.1",

@@ -1,8 +1,9 @@
 import Image from "next/image";
 
 export default function Home() {
-  const a;
-  const b;
+  const s;
+  const q;
+  const с;
 
   return (
       <div className={'flex justify-center text-fuchsia-900 text-8xl/normal'}>LENA</div>
