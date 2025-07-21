@@ -1,12 +1,14 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Home() {
   const s;
   const q;
   const с;
+  const d;
+  const h;
 
   return (
-      <div className={'flex justify-center text-fuchsia-900 text-8xl/normal'}>LENA</div>
+    <div className={'flex justify-center text-8xl/normal text-fuchsia-900'}>LENA</div>
 
     /*<div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
