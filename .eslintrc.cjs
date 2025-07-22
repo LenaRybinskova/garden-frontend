@@ -1,6 +1,6 @@
 module.exports = {
     root: true,
-    env: {browser: true, es2020: true},
+    env: { browser: true, es2020: true },
     extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
     ignorePatterns: ['dist', '.eslintrc.cjs'],
     parser: '@typescript-eslint/parser',
@@ -8,9 +8,27 @@ module.exports = {
     rules: {
         'react-refresh/only-export-components': [
             'warn',
-            {allowConstantExport: true},
+            { allowConstantExport: true },
         ],
-        '@typescript-eslint/no-undef': 'error', // Для TS-проектов
-        'no-undef': 'off', // Отключаем встроенное правило
+        'no-undef': 'off',
     },
 }
+
+/*
+
+module.exports = {
+    root: true,
+    env: { browser: true, es2020: true },
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react-hooks/recommended',
+        '@it-incubator/eslint-config',
+        'next/core-web-vitals' // Добавьте это для Next.js
+    ],
+    rules: {
+        '@typescript-eslint/no-unused-vars': 'warn', // Предупреждение для неиспользуемых переменных
+        'no-undef': 'error', // Ошибка для необъявленных переменных
+        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+};*/
