@@ -10,6 +10,6 @@ module.exports = {
             'warn',
             {allowConstantExport: true},
         ],
-        'no-undef': 'off',
+        'no-undef': 'error',  // перем без определяния дадут ошибку
     },
 }
