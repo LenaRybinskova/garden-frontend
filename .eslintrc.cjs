@@ -10,6 +10,7 @@ module.exports = {
             'warn',
             {allowConstantExport: true},
         ],
-        'no-undef': 'error',  // перем без определяния дадут ошибку
+        '@typescript-eslint/no-undef': 'error', // Для TS-проектов
+        'no-undef': 'off', // Отключаем встроенное правило
     },
 }
