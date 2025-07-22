@@ -1,4 +1,6 @@
 export default function Home() {
+  const lena = 'lena';
+
   return (
     <div className={'flex justify-center text-8xl/normal text-fuchsia-900'}>LENA</div>
 
