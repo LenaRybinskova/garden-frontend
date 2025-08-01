@@ -1,7 +1,7 @@
 module.exports = {
     extends: [
         "stylelint-config-standard",
-        "stylelint-config-tailwindcss" // Добавьте это!
+        "stylelint-config-tailwindcss"
     ],
     rules: {
         // Отключаем правила, которые конфликтуют с Tailwind
