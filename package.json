@@ -7,10 +7,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --no-error-on-unmatched-pattern --fix",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css,scss} && stylelint --fix src/**/*.{css,less,scss,sass,sss}",
+    "lint": "next lint --fix",
+    "lint:check": "next lint",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\"",
+    "stylelint": "stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "lint-staged": "lint-staged",
-    "pre-push": "npm run build",
+    "pre-push": "npm run type-check && npm run lint:check && npm run build",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -18,11 +22,14 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "eslint --fix --max-warnings=0 --no-error-on-unmatched-pattern || (echo 'ESLint failed. Fix errors and try again.'; exit 1)"
+      "eslint --fix"
     ],
     "*.{css,less,scss,sass,sss}": [
       "prettier --write",
       "stylelint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
