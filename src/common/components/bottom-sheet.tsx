@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import { useRef, useState, PointerEventHandler, ReactNode } from 'react';
@@ -66,7 +67,7 @@ export function BottomSheet({
         height: sheetHeight,
       }}
     >
-      {/* Ручка */}
+      {/!* Ручка *!/}
       <div
         onPointerDown={onPointerDown}
         className="flex h-6 cursor-grab touch-none items-center justify-center"
@@ -74,10 +75,11 @@ export function BottomSheet({
         <div className="h-1.5 w-12 rounded-full bg-gray-300" />
       </div>
 
-      {/* Контент */}
+      {/!* Контент *!/}
       <div className="flex flex-1 justify-center overflow-y-auto px-4">
         <div className="w-full max-w-md">{children}</div>
       </div>
     </div>
   );
 }
+*/

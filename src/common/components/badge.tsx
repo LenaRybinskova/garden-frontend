@@ -1,7 +1,7 @@
 // components/ui/badge.tsx
 // Fallback Badge компонент на случай, если не установлен в UI библиотеке
 
-import * as React from 'react';
+/*import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const badgeVariants = cva(
@@ -60,3 +60,4 @@ export const SimpleBadge = ({
     <span className={`${baseClasses} ${variantClasses[variant]} ${className}`}>{children}</span>
   );
 };
+*/

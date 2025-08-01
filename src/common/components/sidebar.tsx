@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import * as React from 'react';
@@ -211,7 +212,7 @@ const Sidebar = React.forwardRef<
         data-variant={variant}
         data-side={side}
       >
-        {/* This is what handles the sidebar gap on desktop */}
+        {/!* This is what handles the sidebar gap on desktop *!/}
         <div
           className={cn(
             'relative h-svh w-[--sidebar-width] bg-transparent transition-[width] duration-200 ease-linear',
@@ -734,3 +735,4 @@ export {
   SidebarTrigger,
   useSidebar,
 };
+*/
