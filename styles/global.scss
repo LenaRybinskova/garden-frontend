@@ -1,7 +1,74 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+/* Определяем цвета через @theme для Tailwind v4 */
+@theme {
+  /* Основные цвета системы */
+  --color-background: #faf9f7;
+  --color-foreground: #2d3319;
+  --color-border: #d4d9c7;
+  --color-input: #d4d9c7;
+  --color-ring: #4a5d23;
+  --color-primary: #4a5d23;
+  --color-primary-foreground: #f7f8f3;
+  --color-secondary: #8b9471;
+  --color-secondary-foreground: #2d3319;
+  --color-muted: #f0f0ea;
+  --color-muted-foreground: #6b7c3a;
+  --color-accent: #e8eadf;
+  --color-accent-foreground: #4a5d23;
+  --color-card: #fff;
+  --color-card-foreground: #2d3319;
+  --color-popover: #faf9f7;
+  --color-popover-foreground: #2d3319;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fafafa;
+
+  /* Природная палитра */
+  --color-beige: #f5f2e8;
+  --color-light-green: #e8f5e8;
+  --color-sage: #9caf88;
+  --color-forest: #4a5d23;
+  --color-earth: #8b7355;
+
+  /* Шрифты */
+  --font-family-sans: 'Montserrat', sans-serif;
+  --font-size-base: 15px;
+
+  /* Радиусы */
+  --radius: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: #1a1f0f;
+    --color-foreground: #d4d9c7;
+    --color-border: #2d3d1a;
+    --color-input: #242e16;
+    --color-ring: #9db86d;
+    --color-primary: #8fa05a;
+    --color-primary-foreground: #1a1f0f;
+    --color-secondary: #3a4029;
+    --color-secondary-foreground: #d4d9c7;
+    --color-muted: #1f2518;
+    --color-muted-foreground: #a3ad8f;
+    --color-accent: #2a3020;
+    --color-accent-foreground: #d4d9c7;
+    --color-card: #1f2518;
+    --color-card-foreground: #d4d9c7;
+    --color-popover: #1c2114;
+    --color-popover-foreground: #d4d9c7;
+    --color-beige: #2a3020;
+    --color-light-green: #1f2518;
+    --color-sage: #8fa05a;
+    --color-forest: #9db86d;
+    --color-earth: #6b5d4a;
+  }
+}
+
+/* Дублируем переменные в старом формате для совместимости */
 @layer base {
   :root {
     --font-main: 'Montserrat', sans-serif;
@@ -62,117 +129,102 @@
     --destructive: #dc2626;
     --destructive-foreground: #fafafa;
   }
+
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+  }
+
+  /* CSS Reset & Base Styles */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-main);
+    line-height: var(--line-height-base);
+    background-color: var(--background);
+    color: var(--foreground);
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Remove default list styles and table spacing */
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* Ensure HTML5 elements display properly */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
 }
 
-html {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-size: var(--font-size-base);
-  scroll-behavior: smooth;
+@layer components {
+  /* Layout Containers */
+  .app-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .app-footer {
+    width: 100%;
+  }
+
+  /* Prevent background scroll when a modal is open */
+  .modal-opened {
+    overflow: hidden;
+  }
+
+  /* Image Zoom */
+  .ngxImageZoomContainer {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-in;
+  }
+
+  .ngxImageZoomThumbnail {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .ngxImageZoomFullContainer {
+    top: 50% !important;
+    transform: translate(0, -50%) !important;
+  }
+
+  /* Quill Editor Overrides */
+  .ql-editor {
+    font-family: var(--font-main);
+  }
+
+  .ql-snow .ql-editor img {
+    max-width: 100%;
+    height: auto;
+  }
 }
-
-/* ===============================
-   CSS Reset & Base Styles
-   =============================== */
-
-/* A modern reset using the universal selector */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-main);
-  line-height: var(--line-height-base);
-  background-color: var(--background);
-  color: var(--foreground);
-  width: 100%;
-  height: 100%;
-}
-
-/* Remove default list styles and table spacing */
-ol,
-ul {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* Ensure HTML5 elements display properly */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-/* ===============================
-   Layout Containers
-   =============================== */
-
-.app-wrapper {
-  max-width: var(--max-width);
-  margin: 0 auto;
-
-  /*   padding: 0 var(--spacing); */
-}
-
-.app-footer {
-  width: 100%;
-}
-
-/* Prevent background scroll when a modal is open */
-.modal-opened {
-  overflow: hidden;
-}
-
-/* ===============================
-   Component Styles
-   =============================== */
-
-/* Image Zoom */
-.ngxImageZoomContainer {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: zoom-in;
-}
-
-.ngxImageZoomThumbnail {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.ngxImageZoomFullContainer {
-  top: 50% !important;
-  transform: translate(0, -50%) !important;
-}
-
-/* Quill Editor Overrides */
-.ql-editor {
-  font-family: var(--font-main);
-}
-
-.ql-snow .ql-editor img {
-  max-width: 100%;
-  height: auto;
-}
-
-/** {
-    background-color: transparent !important;
-} */
