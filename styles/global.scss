@@ -1,110 +1,112 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-  :root {
-    --font-main: 'Montserrat', sans-serif;
-    --font-size-base: 15px;
-    --line-height-base: 1.5;
-    --max-width: 1200px;
-    --spacing: 1rem;
-    --radius: 0.5rem;
-    --background: #faf9f7;
-    --foreground: #2d3319;
-    --border: #d4d9c7;
-    --input: #d4d9c7;
-    --ring: #4a5d23;
-    --primary: #4a5d23;
-    --primary-foreground: #f7f8f3;
-    --secondary: #8b9471;
-    --secondary-foreground: #2d3319;
-    --muted: #f0f0ea;
-    --muted-foreground: #6b7c3a;
-    --accent: #e8eadf;
-    --accent-foreground: #4a5d23;
-    --card: #fff;
-    --card-foreground: #2d3319;
-    --popover: #faf9f7;
-    --popover-foreground: #2d3319;
-    --nature-beige: #f5f2e8;
-    --nature-light-green: #e8f5e8;
-    --nature-sage: #9caf88;
-    --nature-forest: #4a5d23;
-    --nature-earth: #8b7355;
-    --destructive: #dc2626;
-    --destructive-foreground: #fafafa;
-  }
+:root {
+  --color-background: #faf9f7;
+  --color-foreground: #2d3319;
+  --color-border: #d4d9c7;
+  --color-input: #d4d9c7;
+  --color-ring: #4a5d23;
+  --color-primary: #4a5d23;
+  --color-primary-foreground: #f7f8f3;
+  --color-secondary: #8b9471;
+  --color-secondary-foreground: #2d3319;
+  --color-muted: #f0f0ea;
+  --color-muted-foreground: #6b7c3a;
+  --color-accent: #e8eadf;
+  --color-accent-foreground: #4a5d23;
+  --color-card: #fff;
+  --color-card-foreground: #2d3319;
+  --color-popover: #faf9f7;
+  --color-popover-foreground: #2d3319;
+  --color-nature-beige: #f5f2e8;
+  --color-nature-light-green: #e8f5e8;
+  --color-nature-sage: #9caf88;
+  --color-nature-forest: #4a5d23;
+  --color-nature-earth: #8b7355;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fafafa;
+  --radius: 0.5rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
 
-  .dark {
-    --background: #1a1f0f;
-    --foreground: #d4d9c7;
-    --border: #2d3d1a;
-    --input: #242e16;
-    --ring: #9db86d;
-    --primary: #8fa05a;
-    --primary-foreground: #1a1f0f;
-    --secondary: #3a4029;
-    --secondary-foreground: #d4d9c7;
-    --muted: #1f2518;
-    --muted-foreground: #a3ad8f;
-    --accent: #2a3020;
-    --accent-foreground: #d4d9c7;
-    --card: #1f2518;
-    --card-foreground: #d4d9c7;
-    --popover: #1c2114;
-    --popover-foreground: #d4d9c7;
-    --nature-beige: #2a3020;
-    --nature-light-green: #1f2518;
-    --nature-sage: #8fa05a;
-    --nature-forest: #9db86d;
-    --nature-earth: #6b5d4a;
-    --destructive: #dc2626;
-    --destructive-foreground: #fafafa;
-  }
+.dark {
+  --color-background: #1a1f0f;
+  --color-foreground: #d4d9c7;
+  --color-border: #2d3d1a;
+  --color-input: #242e16;
+  --color-ring: #9db86d;
+  --color-primary: #8fa05a;
+  --color-primary-foreground: #1a1f0f;
+  --color-secondary: #3a4029;
+  --color-secondary-foreground: #d4d9c7;
+  --color-muted: #1f2518;
+  --color-muted-foreground: #a3ad8f;
+  --color-accent: #2a3020;
+  --color-accent-foreground: #d4d9c7;
+  --color-card: #1f2518;
+  --color-card-foreground: #d4d9c7;
+  --color-popover: #1c2114;
+  --color-popover-foreground: #d4d9c7;
+  --color-nature-beige: #2a3020;
+  --color-nature-light-green: #1f2518;
+  --color-nature-sage: #8fa05a;
+  --color-nature-forest: #9db86d;
+  --color-nature-earth: #6b5d4a;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fafafa;
+}
+
+@theme {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+  --color-popover: var(--color-popover);
+  --color-popover-foreground: var(--color-popover-foreground);
+  --color-nature-beige: var(--color-nature-beige);
+  --color-nature-light-green: var(--color-nature-light-green);
+  --color-nature-sage: var(--color-nature-sage);
+  --color-nature-forest: var(--color-nature-forest);
+  --color-nature-earth: var(--color-nature-earth);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --font-modern-serif: 'Segoe UI', arial, sans-serif;
 }
 
 html {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-size: var(--font-size-base);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-modern-serif);
   scroll-behavior: smooth;
 }
 
-/* ===============================
-   CSS Reset & Base Styles
-   =============================== */
-
-/* A modern reset using the universal selector */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: var(--font-main);
-  line-height: var(--line-height-base);
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   width: 100%;
   height: 100%;
 }
 
-/* Remove default list styles and table spacing */
-ol,
-ul {
-  list-style: none;
+* {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* Ensure HTML5 elements display properly */
 article,
 aside,
 details,
@@ -119,60 +121,118 @@ section {
   display: block;
 }
 
-/* ===============================
-   Layout Containers
-   =============================== */
-
-.app-wrapper {
-  max-width: var(--max-width);
-  margin: 0 auto;
-
-  /*   padding: 0 var(--spacing); */
+ol,
+ul {
+  list-style: none;
 }
 
-.app-footer {
-  width: 100%;
+*,
+*::before,
+*::after {
+  margin: 0;
+
+  /*  padding: 0; */
+  box-sizing: border-box;
 }
 
-/* Prevent background scroll when a modal is open */
-.modal-opened {
-  overflow: hidden;
+/*
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-/* ===============================
-   Component Styles
-   =============================== */
+*/
 
-/* Image Zoom */
-.ngxImageZoomContainer {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: zoom-in;
+/*
+!* Дублируем переменные в старом формате для совместимости *!
+@layer base {
+    html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+  }
+
+
+!*  body {
+    font-family: var(--font-family-sans);
+    line-height: var(--line-height-base);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    width: 100%;
+    height: 100%;
+  }*!
+
+
+
+  !* Remove default list styles and table spacing *!
+
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  !* Ensure HTML5 elements display properly *!
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
 }
 
-.ngxImageZoomThumbnail {
-  max-width: 100%;
-  max-height: 100%;
-}
+@layer components {
+  !* Layout Containers *!
+  .app-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
 
-.ngxImageZoomFullContainer {
-  top: 50% !important;
-  transform: translate(0, -50%) !important;
-}
+  .app-footer {
+    width: 100%;
+  }
 
-/* Quill Editor Overrides */
-.ql-editor {
-  font-family: var(--font-main);
-}
+  !* Prevent background scroll when a modal is open *!
+  .modal-opened {
+    overflow: hidden;
+  }
 
-.ql-snow .ql-editor img {
-  max-width: 100%;
-  height: auto;
-}
+  !* Image Zoom *!
+  .ngxImageZoomContainer {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-in;
+  }
 
-/** {
-    background-color: transparent !important;
-} */
+  .ngxImageZoomThumbnail {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .ngxImageZoomFullContainer {
+    top: 50% !important;
+    transform: translate(0, -50%) !important;
+  }
+
+  !* Quill Editor Overrides *!
+  .ql-editor {
+    font-family: var(--font-main);
+  }
+
+  .ql-snow .ql-editor img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+*/

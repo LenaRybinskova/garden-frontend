@@ -7,10 +7,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --no-error-on-unmatched-pattern --fix",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css,scss} && stylelint --fix src/**/*.{css,less,scss,sass,sss}",
+    "lint": "next lint --fix",
+    "lint:check": "next lint",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\"",
+    "stylelint": "stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "lint-staged": "lint-staged",
-    "pre-push": "npm run build",
+    "pre-push": "npm run type-check && npm run lint:check && npm run build",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -18,11 +22,14 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "eslint --fix --max-warnings=0 --no-error-on-unmatched-pattern || (echo 'ESLint failed. Fix errors and try again.'; exit 1)"
+      "eslint --fix"
     ],
     "*.{css,less,scss,sass,sss}": [
       "prettier --write",
       "stylelint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
@@ -44,7 +51,7 @@
     "@storybook/addon-docs": "^9.0.18",
     "@storybook/addon-vitest": "^9.0.18",
     "@storybook/nextjs-vite": "^9.0.18",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -52,6 +59,7 @@
     "@typescript-eslint/parser": "^8.37.0",
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.31.0",
     "eslint-config-next": "15.4.1",
     "eslint-config-prettier": "^10.1.8",
@@ -62,6 +70,8 @@
     "husky": "8.0.0",
     "lint-staged": "^15.2.9",
     "playwright": "^1.54.1",
+    "postcss": "^8.5.6",
+    "postcss-import": "^16.1.1",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "sass": "^1.89.2",
@@ -72,7 +82,7 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "stylelint-config-tailwindcss": "^1.0.0",
     "stylelint-order": "^7.0.0",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5",
     "vitest": "^3.2.4"
   }

@@ -1,7 +1,32 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+. "$(dirname -- "$0")/_/husky.sh"
 
 export GIT_LITERAL_PATHSPECS=0
 export LANG=en_US.UTF-8
 
+echo "🔍 Running pre-commit checks..."
+
+# Запускаем lint-staged только для staged файлов
 npm run lint-staged
+
+echo "✅ Pre-commit checks passed!"
+
+# .husky/pre-push
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Running pre-push checks..."
+
+# Проверяем типы
+echo "📝 Type checking..."
+npm run type-check
+
+# Проверяем линтер (без фикса)
+echo "🔍 Linting..."
+npm run lint:check
+
+# Пробуем собрать проект
+echo "🏗️  Building..."
+npm run build
+
+echo "✅ Pre-push checks passed!"
