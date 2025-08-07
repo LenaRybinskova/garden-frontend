@@ -1,5 +1,6 @@
 import { Button } from '@/common/components/button';
 import HomeIcon from '@/assets/icons/HomeIcon';
+import { ThemeSwitcher } from '@/common/components/themeSwitcher';
 
 export const Header = () => {
   return (
@@ -18,7 +19,8 @@ export const Header = () => {
             <p className="text-nature-earth text-xs">Дневник садовода</p>
           </div>
         </div>
-        <div className="">
+        <div className="flex items-center gap-3">
+          <ThemeSwitcher />
           <Button size={'sm'}>logout</Button>
         </div>
       </div>

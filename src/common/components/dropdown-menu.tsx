@@ -1,11 +1,9 @@
-/*
 'use client';
 
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Check, ChevronRight, Circle } from 'lucide-react';
-
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/cn-util';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -28,7 +26,9 @@ const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      'focus:bg-accent data-[state=open]:bg-accent flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none select-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+      'focus:bg-accent data-[state=open]:bg-accent flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none',
+      'focus:ring-0 focus:outline-none',
+      '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
       inset && 'pl-8',
       className,
     )}
@@ -186,4 +186,3 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
 };
-*/

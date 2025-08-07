@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './../../styles/global.scss';
 import { Header } from '@/common/components/Header/Header';
+import { ThemeProvider } from '@/common/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Garden',
@@ -15,10 +16,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <div className="bg-background flex w-full flex-col items-center p-4 px-50">
-          <Header />
-          {children}
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="bg-background flex w-full flex-col items-center p-4 px-50">
+            <Header />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
