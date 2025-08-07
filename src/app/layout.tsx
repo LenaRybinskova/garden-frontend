@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './../../styles/global.scss';
+import { Header } from '@/common/components/Header/Header';
 
 export const metadata: Metadata = {
   title: 'Garden',
@@ -13,7 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-amber-700">{children}</body>
+      <body className="min-h-screen">
+        <div className="bg-background flex w-full flex-col items-center p-4 px-50">
+          <Header />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
