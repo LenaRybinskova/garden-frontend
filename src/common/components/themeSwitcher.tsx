@@ -11,11 +11,18 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/dropdown-menu';
 
+export type ThemeType = 'light' | 'dark';
+
 export function ThemeSwitcher() {
   const { setTheme } = useTheme();
 
+  const handleTheme = (newTheme: ThemeType) => {
+    setTheme(newTheme);
+    // TODO пост запрос на сервер, для сохр темы в профиле. При логине будем в куках получать значение темы, по дефолту светлая.
+  };
+
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
@@ -24,8 +31,8 @@ export function ThemeSwitcher() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleTheme('light')}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleTheme('dark')}>Dark</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

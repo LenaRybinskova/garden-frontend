@@ -20,6 +20,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <p className="text-nature-forest text-lg font-semibold">Пользователь</p>
           <ThemeSwitcher />
           <Button size={'sm'}>logout</Button>
         </div>
