@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  /*const theme = await getTheme()*/ return (
+  /*const theme = await getTheme()*/
+
+  return (
     <html lang="en">
       <body className="min-h-screen">
         <ThemeProvider
@@ -19,7 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           disableTransitionOnChange
         >
           <div className="bg-background flex w-full flex-col items-center p-4 px-50">
-            <Header />
+            <Header auth={false} />
             {children}
           </div>
         </ThemeProvider>

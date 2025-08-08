@@ -24,13 +24,13 @@ export function ThemeSwitcher() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" className={'h-9'}>
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent>
+      <DropdownMenuContent className="w-auto min-w-[unset] px-2 will-change-transform">
         <DropdownMenuItem onClick={() => handleTheme('light')}>Light</DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleTheme('dark')}>Dark</DropdownMenuItem>
       </DropdownMenuContent>
