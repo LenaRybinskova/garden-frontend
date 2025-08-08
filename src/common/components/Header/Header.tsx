@@ -1,7 +1,12 @@
 import { Button } from '@/common/components/button';
 import HomeIcon from '@/assets/icons/HomeIcon';
+import { ThemeSwitcher } from '@/common/components/themeSwitcher';
 
-export const Header = () => {
+export type AuthType = {
+  auth: boolean;
+};
+
+export const Header = ({ auth = false }: AuthType) => {
   return (
     <header
       className={
@@ -18,8 +23,19 @@ export const Header = () => {
             <p className="text-nature-earth text-xs">Дневник садовода</p>
           </div>
         </div>
-        <div className="">
-          <Button size={'sm'}>logout</Button>
+        <div className="flex items-center gap-5">
+          {auth && <p className="text-nature-forest text-lg font-semibold">Пользователь</p>}
+          <ThemeSwitcher />
+          {auth ? (
+            <Button size={'sm'}>logout</Button>
+          ) : (
+            <div className="flex items-center gap-3">
+              <Button variant={'outline'} size={'sm'}>
+                Log in
+              </Button>
+              <Button size={'sm'}>Sign up</Button>
+            </div>
+          )}
         </div>
       </div>
     </header>
