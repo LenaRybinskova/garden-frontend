@@ -1,6 +1,7 @@
 import { Button } from '@/common/components/button';
 import HomeIcon from '@/assets/icons/HomeIcon';
 import { ThemeSwitcher } from '@/common/components/themeSwitcher';
+import Link from 'next/link';
 
 export type AuthType = {
   auth: boolean;
@@ -31,9 +32,11 @@ export const Header = ({ auth = false }: AuthType) => {
           ) : (
             <div className="flex items-center gap-3">
               <Button variant={'outline'} size={'sm'}>
-                Log in
+                <Link href="/login">Log in</Link>
               </Button>
-              <Button size={'sm'}>Sign up</Button>
+              <Button asChild size={'sm'}>
+                <Link href="/auth">Sign up</Link>
+              </Button>
             </div>
           )}
         </div>
