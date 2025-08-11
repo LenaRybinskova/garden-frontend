@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 :root {
-  --color-background: #faf9f7;
+  --color-background: #faf7fa;
   --color-foreground: #2d3319;
   --color-border: #d4d9c7;
   --color-input: #d4d9c7;
@@ -29,6 +29,7 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+  --header-height: 64px;
 }
 
 .dark {
@@ -133,4 +134,10 @@ ul {
 
   /*  padding: 0; */
   box-sizing: border-box;
+}
+
+@layer utilities {
+  .content-height {
+    height: calc(100vh - var(--header-height));
+  }
 }

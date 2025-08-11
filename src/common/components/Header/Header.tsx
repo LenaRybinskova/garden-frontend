@@ -8,12 +8,12 @@ export type AuthType = {
 
 export const Header = ({ auth = false }: AuthType) => {
   return (
-    <header
+    <div
       className={
-        'bg-nature-beige border-nature-sage sticky top-0 z-50 w-full rounded-md border-b-2'
+        'from-nature-beige/50 to-nature-beige/0 border-nature-beige sticky top-0 z-50 w-full border-b-1 bg-gradient-to-r shadow-md'
       }
     >
-      <div className="flex h-16 items-center justify-between p-4">
+      <div className="flex h-[var(--header-height)] items-center justify-between p-4">
         <div className="flex items-center gap-3">
           <div className="from-nature-sage to-nature-forest flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br shadow-sm">
             <HomeIcon />
@@ -23,7 +23,7 @@ export const Header = ({ auth = false }: AuthType) => {
             <p className="text-nature-earth text-xs">Дневник садовода</p>
           </div>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3">
           {auth && <p className="text-nature-forest text-lg font-semibold">Пользователь</p>}
           <ThemeSwitcher />
           {auth ? (
@@ -38,6 +38,6 @@ export const Header = ({ auth = false }: AuthType) => {
           )}
         </div>
       </div>
-    </header>
+    </div>
   );
 };
