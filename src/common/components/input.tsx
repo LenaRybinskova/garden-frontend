@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { cn } from '@/common/utils/cn-util';
 
@@ -9,7 +11,7 @@ type InputType = {
 const Input = React.forwardRef<HTMLInputElement, InputType>(
   ({ className, type, title, error, ...props }, ref) => {
     return (
-      <div className={'flex max-w-[300px] flex-col justify-center gap-1.5 align-middle'}>
+      <div className={'flex w-full flex-col justify-center gap-1.5 align-middle'}>
         {title && <p className={'text-nature-earth text-xs'}>{title}</p>}
         <input
           type={type}
