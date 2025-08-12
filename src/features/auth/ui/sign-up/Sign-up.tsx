@@ -36,12 +36,7 @@ export const SignUp = () => {
   } = useForm<FormValue>({ resolver: zodResolver(signUpSchema) });
 
   const onSubmit = (data: FormValue) => {
-    try {
-      const result = signUpSchema.safeParse(data);
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(data);
   };
 
   return (
@@ -58,7 +53,7 @@ export const SignUp = () => {
             <Controller
               name="name"
               control={control}
-              render={({ field }) => <Input error={errors.email?.message} {...field} />}
+              render={({ field }) => <Input error={errors.name?.message} {...field} />}
             />
             <Controller
               name="email"
@@ -68,12 +63,16 @@ export const SignUp = () => {
             <Controller
               name="password"
               control={control}
-              render={({ field }) => <Input error={errors.email?.message} {...field} />}
+              render={({ field }) => (
+                <Input type={'password'} error={errors.password?.message} {...field} />
+              )}
             />
             <Controller
               name="confirmPassword"
               control={control}
-              render={({ field }) => <Input error={errors.email?.message} {...field} />}
+              render={({ field }) => (
+                <Input type={'password'} error={errors.confirmPassword?.message} {...field} />
+              )}
             />
             <Controller
               name="checkBoxTerms"
