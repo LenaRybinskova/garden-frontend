@@ -58,16 +58,18 @@ export const SignUp = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
+    <div
       className={
-        'border-nature-beige flex flex-col content-center items-center justify-center gap-3 rounded-lg border-2 shadow'
+        'border-nature-beige flex flex-col content-center items-center justify-center gap-5 rounded-lg border-2 shadow'
       }
     >
-      <div className={'flex flex-col items-center justify-center'}>
+      <form
+        className={'flex flex-col items-center justify-center'}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <p className={'text-nature-forest text-lg font-bold'}>Зарегистрироваться</p>
         <div className={'flex w-full flex-col items-center justify-center gap-3 align-middle'}>
-          <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-4'}>
+          <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-5'}>
             <Controller
               name="name"
               control={control}
@@ -159,7 +161,7 @@ export const SignUp = () => {
         <Button size={'sm'} className={'text-sm'} disabled={!isValid} type={'submit'}>
           Зарегистрироваться
         </Button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };

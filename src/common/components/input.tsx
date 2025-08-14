@@ -24,12 +24,12 @@ const Input = React.forwardRef<HTMLInputElement, InputType>(
     };
 
     return (
-      <div className={'flex w-full flex-col justify-center gap-1.5 align-middle'}>
+      <div className={'flex w-full flex-col justify-center gap-0.5 align-middle'}>
         {title && <p className={'text-nature-earth text-xs'}>{title}</p>}
         <input
           type={type}
           className={cn(
-            'border-input bg-background ring-offset-background file:text-foreground placeholder:text-muted-foreground focus-visible:ring-ring [&::placeholder]:text-input flex h-10 w-full rounded-md border px-3 py-2 text-base placeholder-red-500 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+            'bg-background file:text-foreground placeholder:text-muted-foreground [&::placeholder]:text-input text-accent-foreground border-nature-earth focus:border-foreground box-border flex h-10 w-full rounded-md border px-3 py-2 font-medium focus:border-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
             className,
           )}
           ref={ref}
