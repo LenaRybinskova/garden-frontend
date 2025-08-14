@@ -11,6 +11,7 @@ import {
   commonPasswordSchema,
   commonUsernameSchema,
 } from '@/common/utils/commonFormRules';
+import { useRef } from 'react';
 
 const signUpSchema = z
   .object({
@@ -20,16 +21,17 @@ const signUpSchema = z
     confirmPassword: z.string(),
     checkBoxTerms: z.boolean().refine((val) => val),
   })
-
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
-    path: ['confirmPassword'] /*под каким полем будет ошибка*/,
+    path: ['confirmPassword'],
   });
 
 type FormValue = z.infer<typeof signUpSchema>;
 
 export const SignUp = () => {
-  console.log('RERENDER');
+  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  console.log('inputsRef', inputsRef);
+
   const {
     control,
     formState: { errors, isValid },
@@ -47,11 +49,13 @@ export const SignUp = () => {
     },
   });
 
+  const focusInput = (index: number) => {
+    inputsRef.current[index]?.focus();
+  };
+
   const onSubmit = (data: FormValue) => {
     console.log(data);
   };
-
-  console.log('Errors:', errors);
 
   return (
     <form
@@ -68,14 +72,35 @@ export const SignUp = () => {
               name="name"
               control={control}
               render={({ field }) => (
-                <Input placeholder={'user123'} error={errors.name?.message} {...field} />
+                <Input
+                  placeholder={'user123'}
+                  error={errors.name?.message}
+                  onArrowUp={() => focusInput(3)}
+                  onArrowDown={() => focusInput(1)}
+                  autoFocus
+                  {...field}
+                  ref={(el) => {
+                    field.ref(el);
+                    inputsRef.current[0] = el;
+                  }}
+                />
               )}
             />
             <Controller
               name="email"
               control={control}
               render={({ field }) => (
-                <Input placeholder={'user123@gmail.com'} error={errors.email?.message} {...field} />
+                <Input
+                  placeholder={'user123@gmail.com'}
+                  error={errors.email?.message}
+                  onArrowUp={() => focusInput(0)}
+                  onArrowDown={() => focusInput(2)}
+                  {...field}
+                  ref={(el) => {
+                    field.ref(el);
+                    inputsRef.current[1] = el;
+                  }}
+                />
               )}
             />
             <Controller
@@ -86,7 +111,13 @@ export const SignUp = () => {
                   type={'password'}
                   placeholder={'qwerty123'}
                   error={errors.password?.message}
+                  onArrowUp={() => focusInput(1)}
+                  onArrowDown={() => focusInput(3)}
                   {...field}
+                  ref={(el) => {
+                    field.ref(el);
+                    inputsRef.current[2] = el;
+                  }}
                 />
               )}
             />
@@ -98,14 +129,19 @@ export const SignUp = () => {
                   type={'password'}
                   placeholder={'qwerty123'}
                   error={errors.confirmPassword?.message}
+                  onArrowUp={() => focusInput(2)}
+                  onArrowDown={() => focusInput(0)}
                   {...field}
+                  ref={(el) => {
+                    field.ref(el);
+                    inputsRef.current[3] = el;
+                  }}
                 />
               )}
             />
             <Controller
               name="checkBoxTerms"
               control={control}
-              defaultValue={false} /*неявно типиз field*/
               render={({ field: { value, onChange, ref, ...field } }) => (
                 <Checkbox
                   checked={!!value}

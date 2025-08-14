@@ -6,10 +6,23 @@ import { cn } from '@/common/utils/cn-util';
 type InputType = {
   title?: string;
   error?: string;
+  onArrowUp?: () => void;
+  onArrowDown?: () => void;
 } & React.ComponentProps<'input'>;
 
 const Input = React.forwardRef<HTMLInputElement, InputType>(
-  ({ className, type, title, error, ...props }, ref) => {
+  ({ className, type, title, error, onArrowUp, onArrowDown, ...props }, ref) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'ArrowUp' && onArrowUp) {
+        e.preventDefault();
+        onArrowUp();
+      } else if (e.key === 'ArrowDown' && onArrowDown) {
+        e.preventDefault();
+        onArrowDown();
+      }
+      props.onKeyDown?.(e);
+    };
+
     return (
       <div className={'flex w-full flex-col justify-center gap-1.5 align-middle'}>
         {title && <p className={'text-nature-earth text-xs'}>{title}</p>}
@@ -20,6 +33,7 @@ const Input = React.forwardRef<HTMLInputElement, InputType>(
             className,
           )}
           ref={ref}
+          onKeyDown={handleKeyDown}
           {...props}
         />
         {error && <p className={'text-destructive text-xs'}>{error}</p>}
