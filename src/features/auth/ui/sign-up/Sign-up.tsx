@@ -12,7 +12,6 @@ import {
   commonUsernameSchema,
 } from '@/common/utils/commonFormRules';
 import { useRef } from 'react';
-import { cn } from '@/common/utils/cn-util';
 
 const signUpSchema = z
   .object({
@@ -56,8 +55,6 @@ export const SignUp = () => {
   const onSubmit = (data: FormValue) => {
     console.log(data);
   };
-
-  const hasError = Object.keys(errors).length > 0;
 
   return (
     <div className={'flex flex-col content-center items-center justify-center border-2 p-10'}>
@@ -128,7 +125,7 @@ export const SignUp = () => {
                 <Input
                   type={'password'}
                   placeholder={'qwerty123'}
-                  error={errors.confirmPassword?.message}
+                  error={errors.password?.message}
                   onArrowUp={() => focusInput(2)}
                   onArrowDown={() => focusInput(0)}
                   {...field}
