@@ -141,3 +141,9 @@ ul {
     height: calc(100vh - var(--header-height));
   }
 }
+
+@layer utilities {
+  .placeholder {
+    color: var(--accent-foreground);
+  }
+}
