@@ -16,4 +16,4 @@ export const commonPasswordSchema = z
 
 export const commonEmailSchema = z
   .string()
-  .email('The email must match the format example@example.com');
+  .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'The email must match the format example@example.com');

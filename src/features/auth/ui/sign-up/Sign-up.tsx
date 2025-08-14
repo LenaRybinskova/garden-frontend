@@ -22,22 +22,36 @@ const signUpSchema = z
   })
 
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Пароли не совпадают',
+    message: 'Passwords do not match',
     path: ['confirmPassword'] /*под каким полем будет ошибка*/,
   });
 
 type FormValue = z.infer<typeof signUpSchema>;
 
 export const SignUp = () => {
+  console.log('RERENDER');
   const {
     control,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
-  } = useForm<FormValue>({ resolver: zodResolver(signUpSchema) });
+  } = useForm<FormValue>({
+    resolver: zodResolver(signUpSchema),
+    mode: 'onTouched',
+    reValidateMode: 'onSubmit',
+    defaultValues: {
+      checkBoxTerms: false,
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: 's',
+    },
+  });
 
   const onSubmit = (data: FormValue) => {
     console.log(data);
   };
+
+  console.log('Errors:', errors);
 
   return (
     <form
@@ -53,25 +67,39 @@ export const SignUp = () => {
             <Controller
               name="name"
               control={control}
-              render={({ field }) => <Input error={errors.name?.message} {...field} />}
+              render={({ field }) => (
+                <Input placeholder={'user123'} error={errors.name?.message} {...field} />
+              )}
             />
             <Controller
               name="email"
               control={control}
-              render={({ field }) => <Input error={errors.email?.message} {...field} />}
+              render={({ field }) => (
+                <Input placeholder={'user123@gmail.com'} error={errors.email?.message} {...field} />
+              )}
             />
             <Controller
               name="password"
               control={control}
               render={({ field }) => (
-                <Input type={'password'} error={errors.password?.message} {...field} />
+                <Input
+                  type={'password'}
+                  placeholder={'qwerty123'}
+                  error={errors.password?.message}
+                  {...field}
+                />
               )}
             />
             <Controller
               name="confirmPassword"
               control={control}
               render={({ field }) => (
-                <Input type={'password'} error={errors.confirmPassword?.message} {...field} />
+                <Input
+                  type={'password'}
+                  placeholder={'qwerty123'}
+                  error={errors.confirmPassword?.message}
+                  {...field}
+                />
               )}
             />
             <Controller
@@ -84,6 +112,7 @@ export const SignUp = () => {
                   onCheckedChange={onChange}
                   title={'Я согласен с Условия пользования и Политика конфиденциальности'}
                   className={'flex items-center justify-center'}
+                  error={errors.checkBoxTerms?.message}
                   ref={ref}
                   {...field}
                 />
@@ -91,7 +120,7 @@ export const SignUp = () => {
             />
           </div>
         </div>
-        <Button size={'sm'} className={'text-sm'} disabled={false} type={'submit'}>
+        <Button size={'sm'} className={'text-sm'} disabled={!isValid} type={'submit'}>
           Зарегистрироваться
         </Button>
       </div>
