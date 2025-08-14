@@ -30,7 +30,6 @@ type FormValue = z.infer<typeof signUpSchema>;
 
 export const SignUp = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
-  console.log('inputsRef', inputsRef);
 
   const {
     control,
@@ -58,16 +57,14 @@ export const SignUp = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={
-        'border-nature-beige flex flex-col content-center items-center justify-center gap-3 rounded-lg border-2 shadow'
-      }
-    >
-      <div className={'flex flex-col items-center justify-center'}>
+    <div className={'flex flex-col content-center items-center justify-center border-2 p-10'}>
+      <form
+        className={'flex flex-col items-center justify-center gap-5'}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <p className={'text-nature-forest text-lg font-bold'}>Зарегистрироваться</p>
-        <div className={'flex w-full flex-col items-center justify-center gap-3 align-middle'}>
-          <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-4'}>
+        <div className={'flex w-full flex-col items-center justify-center gap-4 align-middle'}>
+          <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-6'}>
             <Controller
               name="name"
               control={control}
@@ -128,7 +125,7 @@ export const SignUp = () => {
                 <Input
                   type={'password'}
                   placeholder={'qwerty123'}
-                  error={errors.confirmPassword?.message}
+                  error={errors.password?.message}
                   onArrowUp={() => focusInput(2)}
                   onArrowDown={() => focusInput(0)}
                   {...field}
@@ -159,7 +156,7 @@ export const SignUp = () => {
         <Button size={'sm'} className={'text-sm'} disabled={!isValid} type={'submit'}>
           Зарегистрироваться
         </Button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
