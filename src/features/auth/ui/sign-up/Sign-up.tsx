@@ -12,6 +12,7 @@ import {
   commonUsernameSchema,
 } from '@/common/utils/commonFormRules';
 import { useRef } from 'react';
+import { cn } from '@/common/utils/cn-util';
 
 const signUpSchema = z
   .object({
@@ -30,7 +31,6 @@ type FormValue = z.infer<typeof signUpSchema>;
 
 export const SignUp = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
-  console.log('inputsRef', inputsRef);
 
   const {
     control,
@@ -57,19 +57,17 @@ export const SignUp = () => {
     console.log(data);
   };
 
+  const hasError = Object.keys(errors).length > 0;
+
   return (
-    <div
-      className={
-        'border-nature-beige flex flex-col content-center items-center justify-center gap-5 rounded-lg border-2 shadow'
-      }
-    >
+    <div className={'flex flex-col content-center items-center justify-center border-2 p-10'}>
       <form
-        className={'flex flex-col items-center justify-center'}
+        className={'flex flex-col items-center justify-center gap-5'}
         onSubmit={handleSubmit(onSubmit)}
       >
         <p className={'text-nature-forest text-lg font-bold'}>Зарегистрироваться</p>
-        <div className={'flex w-full flex-col items-center justify-center gap-3 align-middle'}>
-          <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-5'}>
+        <div className={'flex w-full flex-col items-center justify-center gap-4 align-middle'}>
+          <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-6'}>
             <Controller
               name="name"
               control={control}

@@ -24,8 +24,8 @@ const Input = React.forwardRef<HTMLInputElement, InputType>(
     };
 
     return (
-      <div className={'flex w-full flex-col justify-center gap-0.5 align-middle'}>
-        {title && <p className={'text-nature-earth text-xs'}>{title}</p>}
+      <div className={'relative flex w-full flex-col justify-center gap-1 align-middle'}>
+        {title && <p className={'text-nature-earth relative text-xs'}>{title}</p>}
         <input
           type={type}
           className={cn(
@@ -36,7 +36,9 @@ const Input = React.forwardRef<HTMLInputElement, InputType>(
           onKeyDown={handleKeyDown}
           {...props}
         />
-        {error && <p className={'text-destructive text-xs'}>{error}</p>}
+        {error && (
+          <p className={'text-destructive absolute top-full left-0 mt-1 text-xs'}>{error}</p>
+        )}
       </div>
     );
   },
