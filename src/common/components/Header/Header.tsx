@@ -3,6 +3,8 @@ import { Button } from '@/common/components/button';
 import HomeIcon from '@/assets/icons/HomeIcon';
 import { ThemeSwitcher } from '@/common/components/themeSwitcher';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ROUTES } from '@/common/api/routes';
 
 export type AuthType = {
   auth: boolean;
@@ -17,9 +19,11 @@ export const Header = ({ auth = false }: AuthType) => {
     >
       <div className="flex h-[var(--header-height)] items-center justify-between p-4">
         <div className="flex items-center gap-3">
-          <div className="from-nature-sage to-nature-forest flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br shadow-sm">
-            <HomeIcon />
-          </div>
+          <Link href={ROUTES.PUBLIC}>
+            <div className="from-nature-sage to-nature-forest flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br shadow-sm">
+              <HomeIcon />
+            </div>
+          </Link>
           <div className="">
             <h1 className="text-nature-forest text-lg font-bold">Мой Сад</h1>
             <p className="text-nature-earth text-xs">Дневник садовода</p>
@@ -33,10 +37,10 @@ export const Header = ({ auth = false }: AuthType) => {
           ) : (
             <div className="flex items-center gap-3">
               <Button variant={'outline'} size={'sm'}>
-                <Link href="/login">Log in</Link>
+                <Link href={ROUTES.SIGN_IN}>Log in</Link>
               </Button>
               <Button asChild size={'sm'}>
-                <Link href="/auth">Sign up</Link>
+                <Link href={ROUTES.SIGN_UP}>Sign up</Link>
               </Button>
             </div>
           )}

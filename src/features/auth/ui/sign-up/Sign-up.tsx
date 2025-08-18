@@ -70,7 +70,6 @@ export const SignUp = () => {
                   error={errors.login?.message}
                   onArrowUp={() => focusInput(3)}
                   onArrowDown={() => focusInput(1)}
-                  autoFocus
                   {...field}
                   ref={(el) => {
                     field.ref(el);

@@ -1,4 +1,8 @@
 export const ROUTES = {
+  SIGN_UP: '/auth/signUpPage',
+  SIGN_IN: '/auth/signInPage',
+  PUBLIC: '/',
+
   CREATE: '/create',
   CREATE_NEW_PASSWORD: '/auth/recovery',
   FAVORITES: '/favorites',
@@ -7,11 +11,8 @@ export const ROUTES = {
   MESSENGER: '/messenger',
   PRIVACY_POLICY: '/auth/privacyPolicyPage',
   PROFILE: '/profile',
-  PUBLIC: '/',
   SEARCH: '/search',
   SETTINGS: '/profile/settings',
-  SIGN_IN: '/auth/signInPage',
-  SIGN_UP: '/auth/signUpPage',
   STATICS: '/statics',
   TERMS_OF_SERVICE: '/auth/termsOfServicePage',
 };
