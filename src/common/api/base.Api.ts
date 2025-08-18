@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { SignUp } from '@/features/auth/lib/schemas/signUpSchema';
 import { RegistrationResponse } from '@/features/auth/lib/types/types';
+import { API_URLS } from '@/common/api/apiURLs';
 
 export const baseApi = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://garden-backend-3-lena-3.amvera.io/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: API_URLS.BASE_URL }),
   endpoints: (builder) => ({
     getPlants: builder.query<string, void>({
       query: () => 'plants',
@@ -11,7 +12,7 @@ export const baseApi = createApi({
     registration: builder.mutation<RegistrationResponse, SignUp>({
       query: (body) => ({
         method: 'POST',
-        url: 'auth/register',
+        url: API_URLS.AUTH.REGISTRATION,
         body,
       }),
     }),
