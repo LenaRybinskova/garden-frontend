@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/common/components/button';
 import HomeIcon from '@/assets/icons/HomeIcon';
 import { ThemeSwitcher } from '@/common/components/themeSwitcher';

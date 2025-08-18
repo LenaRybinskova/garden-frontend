@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './../../styles/global.scss';
 import { Header } from '@/common/components/Header/Header';
 import { ThemeProvider } from '@/common/components/theme-provider';
+import { Providers } from '@/common/api/ApiProvider';
 
 export const metadata: Metadata = {
   title: 'Garden',
@@ -14,23 +15,25 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="from-nature-beige to-nature-light-green relative flex min-h-screen flex-col bg-gradient-to-br px-50">
-            <header className={'flex w-full flex-col items-center'}>
-              <Header auth={false} />
-            </header>
-            <main className="flex w-full flex-1 justify-center">
-              <div className="flex flex-col content-center items-center justify-center">
-                {children}
-              </div>
-            </main>
-          </div>
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="from-nature-beige to-nature-light-green relative flex min-h-screen flex-col bg-gradient-to-br px-50">
+              <header className={'flex w-full flex-col items-center'}>
+                <Header auth={false} />
+              </header>
+              <main className="flex w-full flex-1 justify-center">
+                <div className="flex flex-col content-center items-center justify-center">
+                  {children}
+                </div>
+              </main>
+            </div>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

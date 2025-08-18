@@ -4,44 +4,26 @@ import { Input } from '@/common/components/input';
 import { Checkbox } from '@/common/components/checkbox';
 import { Button } from '@/common/components/button';
 import { Controller, useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  commonEmailSchema,
-  commonPasswordSchema,
-  commonUsernameSchema,
-} from '@/common/utils/commonFormRules';
 import { useRef } from 'react';
-
-const signUpSchema = z
-  .object({
-    name: commonUsernameSchema,
-    email: commonEmailSchema,
-    password: commonPasswordSchema,
-    confirmPassword: z.string(),
-    checkBoxTerms: z.boolean().refine((val) => val),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  });
-
-type FormValue = z.infer<typeof signUpSchema>;
+import { signUpValue, signUpSchema } from '@/features/auth/lib/schemas/signUpSchema';
+import { useRegistrationMutation } from '@/common/api/base.Api';
 
 export const SignUp = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+  const [registration] = useRegistrationMutation();
 
   const {
     control,
     formState: { errors, isValid },
     handleSubmit,
-  } = useForm<FormValue>({
+  } = useForm<signUpValue>({
     resolver: zodResolver(signUpSchema),
     mode: 'onTouched',
     reValidateMode: 'onSubmit',
     defaultValues: {
       checkBoxTerms: false,
-      name: '',
+      login: '',
       email: '',
       password: '',
       confirmPassword: 's',
@@ -52,8 +34,20 @@ export const SignUp = () => {
     inputsRef.current[index]?.focus();
   };
 
-  const onSubmit = (data: FormValue) => {
+  const onSubmit = (data: signUpValue) => {
     console.log(data);
+
+    const prepearData = {
+      login: data.login,
+      email: data.email,
+      password: data.password,
+    };
+    try {
+      const result = registration(prepearData).unwrap();
+      console.log('Успешная регистрация:', result);
+    } catch (err) {
+      console.error('Ошибка регистрации:', err);
+    }
   };
 
   return (
@@ -68,12 +62,12 @@ export const SignUp = () => {
         <div className={'flex w-full flex-col items-center justify-center gap-4 align-middle'}>
           <div className={'flex w-full max-w-[310px] flex-col items-center justify-center gap-6'}>
             <Controller
-              name="name"
+              name="login"
               control={control}
               render={({ field }) => (
                 <Input
                   placeholder={'user123'}
-                  error={errors.name?.message}
+                  error={errors.login?.message}
                   onArrowUp={() => focusInput(3)}
                   onArrowDown={() => focusInput(1)}
                   autoFocus
