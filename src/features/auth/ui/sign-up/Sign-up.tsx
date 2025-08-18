@@ -59,7 +59,9 @@ export const SignUp = () => {
   return (
     <div className={'flex flex-col content-center items-center justify-center'}>
       <form
-        className={'flex flex-col items-center justify-center gap-5 border-2 p-10'}
+        className={
+          'border-destructive-foreground flex flex-col items-center justify-center gap-5 rounded-xl border-1 p-10 shadow-2xl'
+        }
         onSubmit={handleSubmit(onSubmit)}
       >
         <p className={'text-nature-forest text-lg font-bold'}>Зарегистрироваться</p>
