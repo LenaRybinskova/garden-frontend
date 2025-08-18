@@ -20,16 +20,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           enableSystem
           disableTransitionOnChange
         >
-          <div className="from-nature-beige to-nature-light-green min-h-screen bg-gradient-to-br px-50">
+          <div className="from-nature-beige to-nature-light-green relative flex min-h-screen flex-col bg-gradient-to-br px-50">
             <header className={'flex w-full flex-col items-center'}>
               <Header auth={false} />
             </header>
-            <main
-              className={
-                'content-height from-nature-beige/50 to-nature-beige/0 flex w-full justify-center bg-gradient-to-br align-middle shadow-md'
-              }
-            >
-              {children}
+            <main className="flex w-full flex-1 justify-center">
+              <div className="flex flex-col content-center items-center justify-center">
+                {children}
+              </div>
             </main>
           </div>
         </ThemeProvider>
