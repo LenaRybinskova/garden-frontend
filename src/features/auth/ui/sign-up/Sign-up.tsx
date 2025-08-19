@@ -37,13 +37,13 @@ export const SignUp = () => {
   const onSubmit = (data: signUpValue) => {
     console.log(data);
 
-    const prepearData = {
+    const prepareData = {
       login: data.login,
       email: data.email,
       password: data.password,
     };
     try {
-      const result = registration(prepearData).unwrap();
+      const result = registration(prepareData).unwrap();
       console.log('Успешная регистрация:', result);
     } catch (err) {
       console.error('Ошибка регистрации:', err);
