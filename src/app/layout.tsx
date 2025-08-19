@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import './../../styles/global.scss';
 import { Header } from '@/common/components/Header/Header';
-import { ThemeProvider } from '@/common/components/theme-provider';
+/*import { ThemeProvider } from '@/common/components/theme-provider';*/
 import { Providers } from '@/common/api/ApiProvider';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
   title: 'Garden',
