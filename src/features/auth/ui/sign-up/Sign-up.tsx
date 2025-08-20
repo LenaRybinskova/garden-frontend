@@ -7,7 +7,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { signUpValue, signUpSchema } from '@/features/auth/lib/schemas/signUpSchema';
-import { useRegistrationMutation } from '@/common/api/base.Api';
+import { useRegistrationMutation } from '@/features/auth/api/AuthApi';
 
 export const SignUp = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
@@ -42,12 +42,9 @@ export const SignUp = () => {
       email: data.email,
       password: data.password,
     };
-    try {
-      const result = registration(prepareData).unwrap();
-      console.log('Успешная регистрация:', result);
-    } catch (err) {
-      console.error('Ошибка регистрации:', err);
-    }
+    registration(prepareData)
+      .unwrap()
+      .then((res) => localStorage.setItem('token', res.accessToken));
   };
 
   return (
