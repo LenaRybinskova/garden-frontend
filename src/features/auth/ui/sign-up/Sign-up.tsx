@@ -8,10 +8,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { signUpValue, signUpSchema } from '@/features/auth/lib/schemas/signUpSchema';
 import { useRegistrationMutation } from '@/features/auth/api/AuthApi';
+import { useRouter } from 'next/navigation';
 
 export const SignUp = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
   const [registration] = useRegistrationMutation();
+  const router = useRouter();
 
   const {
     control,
@@ -44,14 +46,17 @@ export const SignUp = () => {
     };
     registration(prepareData)
       .unwrap()
-      .then((res) => localStorage.setItem('token', res.accessToken));
+      .then((res) => {
+        localStorage.setItem('token', res.accessToken);
+        router.push('/auth/signInPage');
+      });
   };
 
   return (
     <div className={'flex flex-col content-center items-center justify-center'}>
       <form
         className={
-          'border-destructive-foreground flex flex-col items-center justify-center gap-5 rounded-xl border-1 p-10 shadow-2xl'
+          'border-destructive-foreground flex max-w-[391px] flex-col items-center justify-center gap-5 rounded-xl border-1 p-10 shadow-2xl'
         }
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -63,6 +68,7 @@ export const SignUp = () => {
               control={control}
               render={({ field }) => (
                 <Input
+                  autoFocus
                   placeholder={'user123'}
                   error={errors.login?.message}
                   onArrowUp={() => focusInput(3)}

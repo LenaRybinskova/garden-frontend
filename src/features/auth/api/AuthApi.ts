@@ -1,7 +1,8 @@
 import { baseApi } from '@/common/api/base.Api';
 import { MeResponse, RegistrationResponse } from '@/features/auth/lib/types/types';
-import { SignIn, SignUp } from '@/features/auth/lib/schemas/signUpSchema';
+import { SignUp } from '@/features/auth/lib/schemas/signUpSchema';
 import { API_URLS } from '@/common/api/apiURLs';
+import { signInValue } from '@/features/auth/lib/schemas/signInSchema';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -14,7 +15,7 @@ export const authApi = baseApi.injectEndpoints({
         body,
       }),
     }),
-    login: builder.mutation<RegistrationResponse, SignIn>({
+    login: builder.mutation<RegistrationResponse, signInValue>({
       query: (body) => ({
         method: 'POST',
         url: API_URLS.AUTH.LOGIN,
@@ -36,6 +37,7 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
   }),
+  overrideExisting: true,
 });
 
 export const { useRegistrationMutation, useLoginMutation, useLogoutMutation, useMeQuery } = authApi;
