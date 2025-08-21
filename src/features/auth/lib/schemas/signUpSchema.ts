@@ -25,5 +25,3 @@ export type SignUp = {
   email: string;
   password: string;
 };
-
-export type SignIn = Omit<SignUp, 'login'>;

@@ -37,7 +37,9 @@ const Input = React.forwardRef<HTMLInputElement, InputType>(
           {...props}
         />
         {error && (
-          <p className={'text-destructive absolute top-full left-0 mt-1 text-xs'}>{error}</p>
+          <p className={'text-destructive absolute top-full left-0 mt-1 text-xs whitespace-nowrap'}>
+            {error}
+          </p>
         )}
       </div>
     );

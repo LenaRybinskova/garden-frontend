@@ -3,7 +3,6 @@ import { Button } from '@/common/components/button';
 import HomeIcon from '@/assets/icons/HomeIcon';
 import { ThemeSwitcher } from '@/common/components/themeSwitcher';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/common/api/routes';
 
 export type AuthType = {
