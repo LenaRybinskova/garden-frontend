@@ -60,6 +60,9 @@ export function withAuthMe<T extends object>(Component: ComponentType<T>) {
     return <Component {...props} auth={isAuthenticated} />; // refetch?:()=>void
   };
 }
+
+export default withAuthMe(Header) пример использования ХОКа;
+
 */
 
 'use client';
