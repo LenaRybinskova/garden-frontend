@@ -5,11 +5,14 @@ import { ThemeSwitcher } from '@/common/components/themeSwitcher';
 import Link from 'next/link';
 import { ROUTES } from '@/common/api/routes';
 
-export type AuthType = {
+type AuthType = {
   auth: boolean;
 };
 
-export const Header = ({ auth = false }: AuthType) => {
+const Header = (props: AuthType) => {
+  const { auth } = props;
+
+  console.log('Header props', props);
   return (
     <div
       className={
@@ -48,3 +51,5 @@ export const Header = ({ auth = false }: AuthType) => {
     </div>
   );
 };
+
+export default Header;

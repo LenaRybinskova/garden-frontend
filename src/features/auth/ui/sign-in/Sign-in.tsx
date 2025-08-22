@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import { useLoginMutation } from '@/features/auth/api/AuthApi';
 import { useRouter } from 'next/navigation';
 import { signInSchema, signInValue } from '@/features/auth/lib/schemas/signInSchema';
+import { LocalStorage } from '@/common/utils/localStorage';
 
 export const SignIn = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
@@ -38,7 +39,7 @@ export const SignIn = () => {
     login(data)
       .unwrap()
       .then((res) => {
-        localStorage.setItem('token', res.accessToken);
+        LocalStorage.setToken(res.accessToken);
         router.push('/');
       });
   };
@@ -47,11 +48,11 @@ export const SignIn = () => {
     <div className={'flex flex-col content-center items-center justify-center'}>
       <form
         className={
-          'border-destructive-foreground flex max-w-[391px] flex-col items-center justify-center gap-5 rounded-xl border-1 p-10 shadow-2xl'
+          'border-destructive-foreground flex min-w-[391px] flex-col items-center justify-center gap-5 rounded-xl border-1 p-10 shadow-2xl'
         }
         onSubmit={handleSubmit(onSubmit)}
       >
-        <p className={'text-nature-forest text-lg font-bold'}>Pfhtubcnhbhjdfnmcz</p>
+        <p className={'text-nature-forest text-lg font-bold'}>Войти</p>
         <div className={'flex w-full flex-col items-center justify-center gap-4 align-middle'}>
           <div className={'flex w-full flex-col items-center justify-center gap-6'}>
             <Controller

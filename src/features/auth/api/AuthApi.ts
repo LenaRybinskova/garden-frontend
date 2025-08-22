@@ -32,7 +32,7 @@ export const authApi = baseApi.injectEndpoints({
     me: builder.query<MeResponse, void>({
       providesTags: ['Auth'],
       query: () => ({
-        method: 'POST',
+        method: 'GET',
         url: API_URLS.AUTH.ME,
       }),
     }),
@@ -40,4 +40,4 @@ export const authApi = baseApi.injectEndpoints({
   overrideExisting: true,
 });
 
-export const { useRegistrationMutation, useLoginMutation, useLogoutMutation, useMeQuery } = authApi;
+export const { useRegistrationMutation, useLoginMutation, useLazyMeQuery } = authApi;
