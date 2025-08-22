@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import { useLoginMutation } from '@/features/auth/api/AuthApi';
 import { useRouter } from 'next/navigation';
 import { signInSchema, signInValue } from '@/features/auth/lib/schemas/signInSchema';
+import { LocalStorage } from '@/common/utils/localStorage';
 
 export const SignIn = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
@@ -38,7 +39,7 @@ export const SignIn = () => {
     login(data)
       .unwrap()
       .then((res) => {
-        localStorage.setItem('token', res.accessToken);
+        LocalStorage.setToken(res.accessToken);
         router.push('/');
       });
   };
