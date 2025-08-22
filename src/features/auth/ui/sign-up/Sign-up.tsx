@@ -9,7 +9,6 @@ import { useRef } from 'react';
 import { signUpSchema, signUpValue } from '@/features/auth/lib/schemas/signUpSchema';
 import { useRegistrationMutation } from '@/features/auth/api/AuthApi';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { ROUTES } from '@/common/api/routes';
 
 export const SignUp = () => {
@@ -73,6 +72,7 @@ export const SignUp = () => {
           'border-destructive-foreground flex max-w-[391px] flex-col items-center justify-center gap-5 rounded-xl border-1 p-10 shadow-2xl'
         }
         onSubmit={handleSubmit(onSubmit)}
+        data-testid="registration-form"
       >
         <p className={'text-nature-forest text-lg font-bold'}>Зарегистрироваться</p>
         <div className={'flex w-full flex-col items-center justify-center gap-4 align-middle'}>
@@ -92,6 +92,7 @@ export const SignUp = () => {
                     field.ref(el);
                     inputsRef.current[0] = el;
                   }}
+                  data-testid="login-input"
                 />
               )}
             />
@@ -109,6 +110,7 @@ export const SignUp = () => {
                     field.ref(el);
                     inputsRef.current[1] = el;
                   }}
+                  data-testid="email-input"
                 />
               )}
             />
@@ -127,6 +129,7 @@ export const SignUp = () => {
                     field.ref(el);
                     inputsRef.current[2] = el;
                   }}
+                  data-testid="password-input"
                 />
               )}
             />
@@ -145,6 +148,7 @@ export const SignUp = () => {
                     field.ref(el);
                     inputsRef.current[3] = el;
                   }}
+                  data-testid="confirm-password-input"
                 />
               )}
             />
@@ -160,12 +164,19 @@ export const SignUp = () => {
                   error={errors.checkBoxTerms?.message}
                   ref={ref}
                   {...field}
+                  data-testid="checkBoxTerms"
                 />
               )}
             />
           </div>
         </div>
-        <Button size={'sm'} className={'text-sm'} disabled={!isValid} type={'submit'}>
+        <Button
+          size={'sm'}
+          className={'text-sm'}
+          disabled={!isValid}
+          type={'submit'}
+          data-testid="submit-button"
+        >
           Зарегистрироваться
         </Button>
       </form>

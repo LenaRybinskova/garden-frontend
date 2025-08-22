@@ -42,7 +42,9 @@ const Header = (props: AuthType) => {
                 <Link href={ROUTES.SIGN_IN}>Log in</Link>
               </Button>
               <Button asChild size={'sm'}>
-                <Link href={ROUTES.SIGN_UP}>Sign up</Link>
+                <Link href={ROUTES.SIGN_UP} data-testid="header-signup-button">
+                  Sign up
+                </Link>
               </Button>
             </div>
           )}
