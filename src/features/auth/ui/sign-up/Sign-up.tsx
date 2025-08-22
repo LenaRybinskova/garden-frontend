@@ -6,9 +6,11 @@ import { Button } from '@/common/components/button';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
-import { signUpValue, signUpSchema } from '@/features/auth/lib/schemas/signUpSchema';
+import { signUpSchema, signUpValue } from '@/features/auth/lib/schemas/signUpSchema';
 import { useRegistrationMutation } from '@/features/auth/api/AuthApi';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { ROUTES } from '@/common/api/routes';
 
 export const SignUp = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
@@ -50,6 +52,18 @@ export const SignUp = () => {
         localStorage.setItem('token', res.accessToken);
         router.push('/auth/signInPage');
       });
+  };
+
+  const titleCheckbox = () => {
+    return (
+      <a
+        target="_blank"
+        href={ROUTES.PRIVACY_POLICY}
+        className={'hover:text-card-foreground hover:cursor-pointer hover:underline'}
+      >
+        Я согласен с Условия пользования и Политика конфиденциальности
+      </a>
+    );
   };
 
   return (
@@ -141,7 +155,7 @@ export const SignUp = () => {
                 <Checkbox
                   checked={!!value}
                   onCheckedChange={onChange}
-                  title={'Я согласен с Условия пользования и Политика конфиденциальности'}
+                  title={titleCheckbox()}
                   className={'flex items-center justify-center'}
                   error={errors.checkBoxTerms?.message}
                   ref={ref}
