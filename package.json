@@ -58,6 +58,7 @@
     "@chromatic-com/storybook": "^4.0.1",
     "@eslint/eslintrc": "^3",
     "@next/eslint-plugin-next": "^15.4.2",
+    "@playwright/test": "^1.55.0",
     "@storybook/addon-a11y": "^9.0.18",
     "@storybook/addon-docs": "^9.0.18",
     "@storybook/addon-vitest": "^9.0.18",
