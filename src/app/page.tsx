@@ -1,5 +1,7 @@
 'use client';
 
+import { redirect } from 'next/navigation';
+
 export default function Home() {
-  return <div className={'flex min-h-screen w-full bg-blue-400'}>Главная страница</div>;
+  redirect('/auth/signInPage');
 }

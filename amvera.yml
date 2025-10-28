@@ -7,7 +7,7 @@ meta:
     version: 20.18.3
 build:
   skip: false
-  additionalCommands: npm install
+  additionalCommands: npm install && npm run build
   artifacts:
     '*': /
 run:
