@@ -3,6 +3,5 @@
 import { redirect } from 'next/navigation';
 
 export default function Home() {
-  /*  redirect('/auth/signInPage');*/
-  return <div>LENA</div>;
+  redirect('/auth/signInPage');
 }
