@@ -11,6 +11,6 @@ build:
   artifacts:
     '*': /
 run:
-  command: npm run dev
+  command: npm run start
   persistenceMount: /data
   containerPort: 3000
