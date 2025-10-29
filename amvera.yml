@@ -9,7 +9,7 @@ build:
   skip: false
   additionalCommands: npm install && npm run build
   artifacts:
-    '.next': .next
+    '.next/*': /
 run:
   command: npm run start
   persistenceMount: /data
