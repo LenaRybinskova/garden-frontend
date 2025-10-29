@@ -8,8 +8,11 @@ meta:
 build:
   skip: false
   additionalCommands: npm install && npm run build
-  artifacts:
-    '.next': /
+artifacts:
+  '.next': /
+  'package.json': /
+  'package-lock.json': /
+  'node_modules': /
 run:
   command: npm run start
   persistenceMount: /data
