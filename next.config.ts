@@ -2,7 +2,6 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
-  output: 'standalone',
   trailingSlash: true,
 };
 

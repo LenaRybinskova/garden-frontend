@@ -7,13 +7,10 @@ meta:
     version: 20.18.3
 build:
   skip: false
-  additionalCommands: npm install && npm run build
+  additionalCommands: npm install
 artifacts:
-  '.next': /
-  'package.json': /
-  'package-lock.json': /
-  'node_modules': /
+  '*': /
 run:
-  command: npm run start
+  command: npm run dev
   persistenceMount: /data
   containerPort: 3000
