@@ -13,5 +13,5 @@ export const API_URLS = {
     REGISTRATION_EMAIL_RESENDING: 'v1/auth/registration-email-resending',
   },
   /*  BASE_URL: 'https://garden-backend-3-lena-3.amvera.io/',*/
-  BASE_URL: 'https://amvera-lena-3-run-garden-backend-upd/',
+  BASE_URL: 'https://garden-backend-upd-lena-3.amvera.io/',
 };
